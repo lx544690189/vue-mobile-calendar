@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>demo</title>
+	</head>
+
+	<body>
+		<div id="app">
+			<p>DEMO1：默认已选日期为当天</p>
+			<p class="detail">
+				当前日期：{{ demo1.selectedDate }}
+			</p>
+			<button @click="demo1Click">打开日期选择器</button>
+			<calendar v-model="demo1.calendarShow" :default-date="demo1.defaultDate" @change="demo1DateChange">
+			</calendar>
+			<p>DEMO2：多语言-英语</p>
+			<button @click="demo2Click">打开日期选择器</button>
+			<calendar v-model="demo2.calendarShow" :month="demo2.month" :week="demo2.week">
+			</calendar>
+			<p>DEMO3：日期格式化</p>
+			<p class="detail">
+				当前日期：{{ demo3.selectedDate }}
+			</p>
+			<button @click="demo3Click">打开日期选择器</button>
+			<calendar v-model="demo3.calendarShow" :format="demo3.format" @change="demo3DateChange">
+			</calendar>
+			<p>DEMO4：设置最小、最大可选日期</p>
+			<p class="detail">
+				只能选择当天及以后30天内
+			</p>
+			<button @click="demo4Click">打开日期选择器</button>
+			<calendar v-model="demo4.calendarShow" :min-date="demo4.minDate" :max-date="demo4.maxDate">
+			</calendar>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue-mobile-calendar.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app',
+				data: {
+					demo1: {
+						calendarShow: false,
+						defaultDate: new Date(),
+						selectedDate: dateFormat(new Date(), "yyyy-MM-dd")
+					},
+					demo2: {
+						calendarShow: false,
+						month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+						week: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+					},
+					demo3: {
+						calendarShow: false,
+						format: "yyyy年MM月dd日",
+						selectedDate: ""
+					},
+					demo4: {
+						calendarShow: false,
+						minDate: new Date(),
+						maxDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 30)
+					}
+				},
+				methods: {
+					demo1Click() {
+						this.demo1.calendarShow = true;
+					},
+					demo2Click() {
+						this.demo2.calendarShow = true;
+					},
+					demo3Click() {
+						this.demo3.calendarShow = true;
+					},
+					demo4Click() {
+						this.demo4.calendarShow = true;
+					},
+					demo1DateChange(date, formatDate) {
+						this.demo1.selectedDate = formatDate;
+					},
+					demo3DateChange(date, formatDate) {
+						this.demo3.selectedDate = formatDate;
+					}
+				}
+			})
+
+			function dateFormat(date, fmt) {
+				var o = {
+					"M+": date.getMonth() + 1,
+					"d+": date.getDate()
+				};
+				if(/(y+)/.test(fmt))
+					fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+				for(var k in o)
+					if(new RegExp("(" + k + ")").test(fmt))
+						fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+				return fmt;
+			}
+		</script>
+	</body>
+
+</html>
