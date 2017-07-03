@@ -1,9 +1,9 @@
 {
   "name": "vue-mobile-calendar",
   "description": "a vue component of calendar for mobile",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "lixin",
-  "private": true,
+  "homepage": "https://github.com/lx544690189/vue-mobile-calendar",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
