@@ -1,13 +1,15 @@
 # vue-mobile-calendar
 
 ![Vue 2.x](https://img.shields.io/badge/vue-2.x-green.svg "Vue 2 Compatible")
+[![NPM](https://nodei.co/npm/vue-mobile-calendar.png?downloads=true&downloadRank=true)](https://www.npmjs.com/package/vue-mobile-calendar)
+
 > a vue component of calendar for mobile
 
 [demo](https://lx544690189.github.io/vue-mobile-calendar/)
 
 ## Build Setup
 
-``` bash
+```
 # install dependencies
 npm install
 
