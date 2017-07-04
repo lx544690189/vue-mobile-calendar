@@ -163,7 +163,10 @@
 			}
 			this.$refs["calendar-touch"].addEventListener('touchstart', this.handleTouchStart);
 			this.$refs["calendar-touch"].addEventListener('touchend', this.handleTouchEnd);
-			this.$refs["calendar-touch"].addEventListener('touchmove', this.handleTouchMove);
+		},
+		beforeDestroy() {
+			this.$refs["calendar-touch"].removeEventListener('touchstart', this.handleTouchStart);
+			this.$refs["calendar-touch"].removeEventListener('touchend', this.handleTouchEnd);
 		},
 		methods: {
 			//初始化
