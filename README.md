@@ -1,11 +1,19 @@
 # vue-mobile-calendar
 
 ![Vue 2.x](https://img.shields.io/badge/vue-2.x-green.svg "Vue 2 Compatible")
+
 [![NPM](https://nodei.co/npm/vue-mobile-calendar.png?downloads=true&downloadRank=true)](https://www.npmjs.com/package/vue-mobile-calendar)
 
 > a vue component of calendar for mobile
 
+> 移动端日期选择器（>=vue2.0）
+
 [demo](https://lx544690189.github.io/vue-mobile-calendar/)
+
+<p>
+<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/screenshot.jpg" width="200" float="left"/>
+<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/QRcode.png" width="300" float="left"/>
+</p>
 
 ## Build Setup
 
@@ -62,4 +70,8 @@ week | text of day | Array | ["周一", "周二", "周三", "周四", "周五", 
 
 event name | description | 	parameter of callback
 ---|--- | ---
-onChange | when date change | (date,formatDate)
+change | when date change | (date,formatDate)
+
+## Reference
+- [framework7](https://github.com/nolimits4web/Framework7)
+- [mint-ui](https://github.com/ElemeFE/mint-ui/)
