@@ -6,7 +6,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'vue-mobile-calendar.js'
+    filename: 'vue-mobile-calendar.js',
+    library: 'Calendar',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
