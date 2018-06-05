@@ -15,6 +15,11 @@
 <img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/QRcode.png" width="300" float="left"/>
 </p>
 
+## update log
+##### v2.1.0（2018-6-5）
+
+bug fixed:切换月份或者年份时，网页会回到顶端
+
 ## Build Setup
 
 ```
