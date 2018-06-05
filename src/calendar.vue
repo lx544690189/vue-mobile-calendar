@@ -5,20 +5,20 @@
 				<div class="toolbar">
 					<div class="toolbar-inner">
 						<div class="calendar-month-picker">
-							<a href="#" class="calendar-prev" @click="handelMonthClick('pre')">
+							<a class="calendar-prev" @click="handelMonthClick('pre')">
 								<div class="pre-img"></div>
 							</a>
 							<div class="current-month-value">{{ month[currentViewMonth.month - 1]}}</div>
-							<a href="#" class="calendar-next" @click="handelMonthClick('next')">
+							<a class="calendar-next" @click="handelMonthClick('next')">
 								<div class="next-img"></div>
 							</a>
 						</div>
 						<div class="calendar-year-picker">
-							<a href="#" class="calendar-prev" @click="handelYearClick('pre')">
+							<a class="calendar-prev" @click="handelYearClick('pre')">
 								<div class="pre-img"></div>
 							</a>
 							<div class="current-year-value">{{ currentViewMonth.year }}</div>
-							<a href="#" class="calendar-next" @click="handelYearClick('next')">
+							<a class="calendar-next" @click="handelYearClick('next')">
 								<div class="next-img"></div>
 							</a>
 						</div>
@@ -26,16 +26,17 @@
 				</div>
 				<div class="calendar-inner">
 					<div class="calendar-week">
-						<div class="calendar-week-day" v-for="item in week">{{item}}</div>
+						<div class="calendar-week-day" v-for="(item,index) in week" :key="index">{{item}}</div>
 					</div>
 					<div class="calendar-month" ref="calendar-touch">
 						<div class="calendar-month-wrapper"
 							:style="{'transform': 'translate3d(' + (translateX_parent) + '%, 0, 0)'}">
 							<div class="calendar-month-pre"
 								:style="{'transform': 'translate3d(' + (translateX-100) + '%, 0, 0)'}">
-								<div class="calendar-month-row" v-for="(row, row_index) in dateObj.pre.allDay_list">
+								<div class="calendar-month-row" v-for="(row, row_index) in dateObj.pre.allDay_list" :key="row_index">
 									<div class="calendar-day"
 										v-for="(col, col_index) in row"
+                    :key="col_index"
 										@click="handelDayClick(col,col_index,dateObj.pre.start,dateObj.pre.end)"
 										:class="{'grey':row_index*7+row_index*7+col_index<dateObj.pre.start || row_index*7+col_index>dateObj.pre.end ,'selected':col.selected }">
 										<span :class="{'today':col.isToday,'invalid':col.invalid}">
@@ -46,9 +47,10 @@
 							</div>
 							<div class="calendar-month-current"
 								:style="{'transform': 'translate3d(' + translateX + '%, 0, 0)'}">
-								<div class="calendar-month-row" v-for="(row, row_index) in dateObj.current.allDay_list">
+								<div class="calendar-month-row" v-for="(row, row_index) in dateObj.current.allDay_list" :key="row_index">
 									<div class="calendar-day"
 										v-for="(col, col_index) in row"
+                    :key="col_index"
 										@click="handelDayClick(col,row_index*7+col_index,dateObj.current.start,dateObj.current.end)"
 										:class="{'grey':row_index*7+col_index<dateObj.current.start || row_index*7+col_index>dateObj.current.end ,'selected':col.selected }">
 										<span :class="{'today':col.isToday,'invalid':col.invalid}">
@@ -59,9 +61,10 @@
 							</div>
 							<div class="calendar-month-next"
 								:style="{'transform': 'translate3d(' + (translateX+100) + '%, 0, 0)'}">
-								<div class="calendar-month-row" v-for="(row, row_index) in dateObj.next.allDay_list">
+								<div class="calendar-month-row" v-for="(row, row_index) in dateObj.next.allDay_list" :key="row_index">
 									<div class="calendar-day"
 										v-for="(col, col_index) in row"
+                    :key="col_index"
 										@click="handelDayClick(col,row_index*7+col_index,dateObj.next.start,dateObj.next.end)"
 										:class="{'grey':row_index*7+col_index<dateObj.next.start || row_index*7+col_index>dateObj.next.end ,'selected':col.selected }">
 										<span :class="{'today':col.isToday,'invalid':col.invalid}">
