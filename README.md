@@ -16,6 +16,10 @@
 </p>
 
 ## update log
+##### v2.2.0（2018-7-23）
+bug fixed:minDate maxDate 等参数动态改变视图不能实时更新问题
+
+## update log
 ##### v2.1.0（2018-6-5）
 
 bug fixed:切换月份或者年份时，网页会回到顶端
