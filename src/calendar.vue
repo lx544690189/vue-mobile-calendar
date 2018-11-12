@@ -363,7 +363,7 @@
 								this.dateObj[key].allDay_list[row][col].isToday = true;
 							}
               if(this.minDate && date - new Date(this.minDate.getFullYear(),this.minDate.getMonth(),this.minDate.getUTCDate()) < 0
-              || this.maxDate && date - new Date(this.maxDate.getFullYear(),this.maxDate.getMonth(),this.maxDate.getUTCDate()+1) > 0){
+              || this.maxDate && date - new Date() > 0){
 								this.dateObj[key].allDay_list[row][col].invalid = true;
 							}else{
                 this.dateObj[key].allDay_list[row][col].invalid = false;
