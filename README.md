@@ -16,6 +16,9 @@
 </p>
 
 ## update log
+##### v2.3.0（2018-11-12)
+bug fixed:最大值计算错误
+
 ##### v2.2.0（2018-7-23）
 bug fixed:minDate maxDate 等参数动态改变视图不能实时更新问题
 
