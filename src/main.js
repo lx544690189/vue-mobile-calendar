@@ -1,11 +1,9 @@
-import Calendar from './calendar.vue'
+import Vue from 'vue'
+import App from './App.vue'
+import './registerServiceWorker'
 
-const install = function(Vue) {
-	Vue.component(Calendar.name, Calendar);
-}
+Vue.config.productionTip = false
 
-if(typeof window !== 'undefined' && window.Vue) {
-	install(window.Vue);
-};
-
-export default install
+new Vue({
+  render: h => h(App)
+}).$mount('#app')

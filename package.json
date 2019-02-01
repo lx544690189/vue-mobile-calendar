@@ -1,27 +1,35 @@
 {
   "name": "vue-mobile-calendar",
-  "description": "a vue component of calendar for mobile",
-  "version": "2.3.0",
+  "description": "a vue component of calendar for mobile 移动端Vue日期选择控件",
+  "keywords": [
+    "calendar",
+    "vue"
+  ],
+  "version": "3.0",
   "author": "lixin",
   "homepage": "https://github.com/lx544690189",
   "repository": {
     "type": "git",
     "url": "https://github.com/lx544690189/vue-mobile-calendar"
   },
-  "main": "dist/vue-mobile-calendar.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "devDependencies": {
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-preset-env": "^1.5.1",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
-    "file-loader": "^0.9.0",
-    "vue-loader": "^12.1.0",
-    "vue-template-compiler": "^2.3.3",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-plugin-pwa": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.21",
+    "register-service-worker": "^1.5.2",
+    "vue": "^2.5.22"
   }
 }
