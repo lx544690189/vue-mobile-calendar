@@ -41,34 +41,44 @@
       line-height: 18px;
     }
   }
-  .m-months {
+  .m-months-container{
     position: relative;
     box-sizing: border-box;
-    .m-row {
-      position: relative;
-      display: flex;
-      height: 40px;
-      &::before {
-        content: '';
-        position: absolute;
-        background-color: #ccc;
-        display: block;
-        top: 0;
-        right: auto;
-        bottom: auto;
-        left: 0;
-        height: 1px;
-        width: 100%;
-        transform-origin: 50% 0;
-      }
-      .m-day {
-        line-height: 40px;
-        font-size: 14px;
-        width: calc(100% / 7);
-        text-align: center;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
+    height: 240px;
+    overflow: hidden;
+    .m-months {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .m-row {
+        position: relative;
+        display: flex;
+        height: 40px;
+        &::before {
+          content: '';
+          position: absolute;
+          background-color: #ccc;
+          display: block;
+          top: 0;
+          right: auto;
+          bottom: auto;
+          left: 0;
+          height: 1px;
+          width: 100%;
+          transform-origin: 50% 0;
+        }
+        .m-day {
+          line-height: 40px;
+          font-size: 14px;
+          width: calc(100% / 7);
+          text-align: center;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+        }
       }
     }
   }
+  
 }

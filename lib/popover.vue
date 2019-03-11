@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import './popover.less'
+import './popover.less';
 
 export default {
   name: 'popover',
   props: {
     show: Boolean,
-    default: false
-  }
-}
+    default: false,
+  },
+};
 </script>

@@ -6,22 +6,22 @@
 </template>
 
 <script>
-import { calendar } from '../lib/index.js'
+import { calendar } from '../lib/index.js';
 export default {
   components: {
-    calendar
+    calendar,
   },
-  data () {
+  data() {
     return {
-      show: true
-    }
+      show: true,
+    };
   },
   methods: {
-    click () {
-      this.show = !this.show
-    }
-  }
-}
+    click() {
+      this.show = !this.show;
+    },
+  },
+};
 </script>
 
 <style lang="less">

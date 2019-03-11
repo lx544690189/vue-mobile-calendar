@@ -5,24 +5,24 @@
 </template>
 
 <script>
-import './index.less'
-import popover from './popover'
-import inlineCalendar from './inlineCalendar'
+import './index.less';
+import popover from './popover';
+import inlineCalendar from './inlineCalendar';
 
 export default {
   name: 'calendar',
-  data () {
+  data() {
     return {
-      isInline: this.inline
-    }
+      isInline: this.inline,
+    };
   },
   components: {
     popover,
-    inlineCalendar
+    inlineCalendar,
   },
   props: {
     show: Boolean,
-    default: false
-  }
-}
+    default: false,
+  },
+};
 </script>
