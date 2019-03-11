@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <calendar/>
+    <button @click="click">显示/隐藏</button>
+    <calendar :show.sync="show"/>
   </div>
 </template>
 
 <script>
-
+import { calendar } from '../lib/index.js'
 export default {
+  components: {
+    calendar
+  },
+  data () {
+    return {
+      show: true
+    }
+  },
+  methods: {
+    click () {
+      this.show = !this.show
+    }
+  }
 }
 </script>
 

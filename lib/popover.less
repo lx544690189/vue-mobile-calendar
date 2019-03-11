@@ -1,0 +1,16 @@
+.m-popover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  will-change: transform;
+  z-index: 10000;
+  transform: translateY(0);
+  transition-duration: .2s;
+  transition-timing-function: linear;
+}
+
+.m-popup-slide-bottom-enter,
+.m-popup-slide-bottom-leave-active {
+  transform: translateY(300px);
+}
