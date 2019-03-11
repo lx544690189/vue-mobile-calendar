@@ -19,7 +19,8 @@
     "build-lib": "vue-cli-service build --target lib --name Calendar --dest dist lib/index.js",
     "lint": "vue-cli-service lint"
   },
-  "dependencies":{
+  "dependencies": {
+    "dayjs": "^1.8.10",
     "vue": "^2.5.22"
   },
   "devDependencies": {
