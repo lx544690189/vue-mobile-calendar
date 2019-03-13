@@ -30,6 +30,7 @@ module.exports = {
       "exports": "always-multiline",
       "functions": "ignore"
     }],
+    "no-unused-vars": 'off',
   },
   parserOptions: {
     parser: 'babel-eslint'
