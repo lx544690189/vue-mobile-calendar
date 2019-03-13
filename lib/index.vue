@@ -1,6 +1,6 @@
 <template>
   <popover :show.sync="show">
-    <inlineCalendar></inlineCalendar>
+    <inlineCalendar v-bind="$props"></inlineCalendar>
   </popover>
 </template>
 
@@ -11,18 +11,16 @@ import inlineCalendar from './inlineCalendar';
 
 export default {
   name: 'calendar',
-  data() {
-    return {
-      isInline: this.inline,
-    };
-  },
   components: {
     popover,
     inlineCalendar,
   },
   props: {
-    show: Boolean,
-    default: false,
+    show: {
+      type: Boolean,
+      default: false,
+    },
+    ...inlineCalendar.props,
   },
 };
 </script>
