@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button @click="click">显示/隐藏</button>
-    <calendar :show.sync="show"/>
+    <calendar :show.sync="show" :defaultDate="defaultDate" :mode="mode" :disabledDate="disabledDate" @change="onChange"/>
   </div>
 </template>
 
@@ -14,11 +14,21 @@ export default {
   data() {
     return {
       show: true,
+      disabledDate: [new Date('2019-2-28'), new Date('2019-3-2')],
+      // mode: 'single',
+      // defaultDate: new Date(),
+      // mode: 'multiple',
+      // defaultDate: [new Date(), new Date('2019-2-28')],
+      mode: 'during',
+      defaultDate: [new Date('2019-3-20'), new Date('2019-3-25')],
     };
   },
   methods: {
     click() {
       this.show = !this.show;
+    },
+    onChange(date) {
+      console.log('change date: ', date);
     },
   },
 };
@@ -28,6 +38,7 @@ export default {
 html,body{
   margin: 0;
   padding: 0;
+  background: #fff;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

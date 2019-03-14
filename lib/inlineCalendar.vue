@@ -52,6 +52,7 @@
                   'm-today': day.isToday,
                   'm-disable': day.isDisable,
                   'm-select': day.isSelect,
+                  'm-during': day.isDuring
                 }"
               >
                 {{day.value}}
@@ -109,7 +110,7 @@ export default {
         month: dayjs().month() + 1,
         date: dayjs().date(),
       },
-      selectDate: undefined,
+      selectDate: [],
     };
   },
   created() {
@@ -122,8 +123,15 @@ export default {
     if (mode === 'multiple' && Array.isArray(defaultDate)) {
       if (defaultDate.length > 0) {
         this.selectDate = defaultDate.map((item) => dayjs(item).startOf('day'));
-      } else {
-        this.selectDate = [];
+      }
+    }
+    if (mode === 'during' && Array.isArray(defaultDate)) {
+      if (defaultDate.length === 2) {
+        const startDate = dayjs(defaultDate[0]).startOf('day');
+        const endDate = dayjs(defaultDate[1]).startOf('day');
+        if (startDate.isBefore(endDate) || startDate.isSame(endDate)) {
+          this.selectDate = [startDate, endDate];
+        }
       }
     }
     this.showDate = {
@@ -133,27 +141,44 @@ export default {
     this.getFullDate(this.showDate);
   },
   methods: {
-    // 日期点击
+    // 触发change事件
+    emitChange() {
+      this.$emit('change', this.selectDate);
+    },
+    // 日期点击事件
     onDayClick(day) {
       switch (this.$props.mode) {
       case 'single':
         if (!day.isSelect && !day.isDisable) {
           this.selectDate = day.dateTime;
           this.getFullDate(this.showDate);
+          this.emitChange();
         }
         break;
       case 'multiple':
         if (!day.isSelect && !day.isDisable) {
           this.selectDate.push(day.dateTime);
           this.getFullDate(this.showDate);
+          this.emitChange();
         } else {
           if (this.selectDate.length > 1) {
             this.selectDate = this.selectDate.filter((item) => !item.isSame(day.dateTime));
             this.getFullDate(this.showDate);
+            this.emitChange();
           }
         }
         break;
-      default:
+      case 'during':
+        if (this.selectDate.length === 1) {
+          this.selectDate.push(day.dateTime);
+          if (this.selectDate[1].isBefore(this.selectDate[0])) {
+            this.selectDate.reverse();
+          }
+        } else if (this.selectDate.length === 2) {
+          this.selectDate = [day.dateTime];
+        }
+        this.getFullDate(this.showDate);
+        this.emitChange();
         break;
       }
     },
@@ -197,6 +222,17 @@ export default {
       };
       this.getFullDate(this.showDate);
     },
+    getFullDate() {
+      const date = dayjs(`${this.showDate.year}-${this.showDate.month}`);
+      const thisDate = this.getDate(date);
+      const prevDate = this.getDate(date.subtract(1, 'month'));
+      const nextDate = this.getDate(date.add(1, 'month'));
+      this.fullDate = [
+        prevDate.fullDate,
+        thisDate.fullDate,
+        nextDate.fullDate,
+      ];
+    },
     // 当前日期是否被选中
     isSelect(date) {
       let select = false;
@@ -211,23 +247,21 @@ export default {
           select = true;
         }
         break;
-      default:
-        break;
       }
       return select;
     },
-    getFullDate() {
-      const date = dayjs(`${this.showDate.year}-${this.showDate.month}`);
-      console.log('date: ', date.format('YYYY-MM'));
-      const thisDate = this.getDate(date);
-      const prevDate = this.getDate(date.subtract(1, 'month'));
-      const nextDate = this.getDate(date.add(1, 'month'));
-      this.fullDate = [
-        prevDate.fullDate,
-        thisDate.fullDate,
-        nextDate.fullDate,
-      ];
-      console.log('this.fullDate: ', this.fullDate);
+    // 当前时间是否在selectDate之间
+    isBetting(date) {
+      if (this.mode === 'during') {
+        const startDate = this.selectDate[0];
+        const endDate = this.selectDate[1];
+        if (this.selectDate.length === 1) {
+          return date.isSame(startDate);
+        } else if (this.selectDate.length === 2) {
+          return (date.isAfter(startDate) && date.isBefore(endDate)) || date.isSame(startDate) || date.isSame(endDate);
+        }
+      }
+      return false;
     },
     getDate(thisDate) {
       let date = [];
@@ -250,7 +284,8 @@ export default {
             isGrey: true,
             isToday: dateTime.isSame(dayjs().startOf('day')),
             isSelect: this.isSelect(dateTime),
-            isDisable: disabledDate.some((item) => item.isSame(dateTime)),
+            isDisable: this.mode !== 'during' && disabledDate.some((item) => item.isSame(dateTime)),
+            isDuring: this.isBetting(dateTime),
           };
         }
         // 当月
@@ -266,7 +301,8 @@ export default {
             isGrey: false,
             isToday: dateTime.isSame(dayjs().startOf('day')),
             isSelect: this.isSelect(dateTime),
-            isDisable: disabledDate.some((item) => item.isSame(dateTime)),
+            isDisable: this.mode !== 'during' && disabledDate.some((item) => item.isSame(dateTime)),
+            isDuring: this.isBetting(dateTime),
           };
         }
         // 下月
@@ -279,7 +315,8 @@ export default {
             isGrey: true,
             isToday: dateTime.isSame(dayjs().startOf('day')),
             isSelect: this.isSelect(dateTime),
-            isDisable: disabledDate.some((item) => item.isSame(dateTime)),
+            isDisable: this.mode !== 'during' && disabledDate.some((item) => item.isSame(dateTime)),
+            isDuring: this.isBetting(dateTime),
           };
         }
       }
