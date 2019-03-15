@@ -93,6 +93,14 @@ export default {
       type: String,
       default: 'single',
     },
+    enableTouch: {
+      type: Boolean,
+      default: true,
+    },
+    preventTouchEvent: {
+      type: Boolean,
+      default: true,
+    },
     monthNames: {
       type: Array,
       default() {
@@ -156,36 +164,42 @@ export default {
   },
   methods: {
     touchstart(event) {
-      touchStartPosition = event.touches[0].clientX;
-      touchEndPosition = event.touches[0].clientY;
-      timeStamp = event.timeStamp;
-      this.touch = {
-        x: 0,
-        y: 0,
-      };
-      this.isTouching = true;
-    },
-    touchmove(event) {
-      event.preventDefault();
-      this.touch = {
-        x: (event.touches[0].clientX - touchStartPosition) / this.$refs.calendar.offsetWidth,
-        y: (event.touches[0].clientY - touchEndPosition) / this.$refs.calendar.offsetHeight,
-      };
-    },
-    touchend(event) {
-      this.isTouching = false;
-      const during = dayjs(event.timeStamp).diff(timeStamp);
-      if (Math.abs(this.touch.x) < 0.5 && during > 200) {
+      if (this.enableTouch) {
+        touchStartPosition = event.touches[0].clientX;
+        touchEndPosition = event.touches[0].clientY;
+        timeStamp = event.timeStamp;
         this.touch = {
           x: 0,
           y: 0,
         };
-      } else {
-        if (this.touch.x > 0) {
-          this.changeMonth('prev');
-        }
-        if (this.touch.x < 0) {
-          this.changeMonth('next');
+        this.isTouching = true;
+      }
+    },
+    touchmove(event) {
+      if (this.enableTouch) {
+        this.preventTouchEvent && event.preventDefault();
+        this.touch = {
+          x: (event.touches[0].clientX - touchStartPosition) / this.$refs.calendar.offsetWidth,
+          y: (event.touches[0].clientY - touchEndPosition) / this.$refs.calendar.offsetHeight,
+        };
+      }
+    },
+    touchend(event) {
+      if (this.enableTouch) {
+        this.isTouching = false;
+        const during = dayjs(event.timeStamp).diff(timeStamp);
+        if (Math.abs(this.touch.x) < 0.5 && during > 200) {
+          this.touch = {
+            x: 0,
+            y: 0,
+          };
+        } else {
+          if (this.touch.x > 0) {
+            this.changeMonth('prev');
+          }
+          if (this.touch.x < 0) {
+            this.changeMonth('next');
+          }
         }
       }
     },
