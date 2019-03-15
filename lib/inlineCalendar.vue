@@ -93,6 +93,14 @@ export default {
       type: String,
       default: 'single',
     },
+    dayClick: {
+      type: Function,
+      default() {
+        return function() {
+          return true;
+        };
+      },
+    },
     enableTouch: {
       type: Boolean,
       default: true,
@@ -209,6 +217,9 @@ export default {
     },
     // 日期点击事件
     onDayClick(day) {
+      if (!this.dayClick(day.dateTime)) {
+        return;
+      }
       switch (this.$props.mode) {
       case 'single':
         if (!day.isSelect && !day.isDisable) {
