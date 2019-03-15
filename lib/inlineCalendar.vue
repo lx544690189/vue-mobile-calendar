@@ -1,5 +1,5 @@
 <template>
-  <div class="m-calendar">
+  <div class="m-calendar" ref="calendar">
     <div class="m-toolbar">
       <div class="m-year-selector">
         <a class="m-prev-btn" @click="changeYear('prev')"></a>
@@ -23,16 +23,22 @@
     </div>
     <div
       class="m-months-container"
+      @touchstart="touchstart"
+      @touchmove="touchmove"
+      @touchend="touchend"
     >
       <div
         class="m-months-wrapper"
-        :style="{'transform': 'translate3d(' + (-translateX)*100 + '%, 0, 0)'}"
+        :style="{'transform': `translate3d(${-translateX*100}%, 0, 0)`}"
       >
         <div
           class="m-months"
           v-for="(month,monthIndex) in fullDate"
           :key="monthIndex"
-          :style="{'transform': 'translate3d(' + (monthIndex-1+translateX)*100 + '%, 0, 0)'}"
+          :style="{
+            transform: `translate3d(${(monthIndex-1+translateX + (isTouching ? touch.x : 0))*100}%, 0, 0)`,
+            transitionDuration: isTouching ? '0s' : '.3s',
+          }"
         >
           <div
             class="m-row"
@@ -68,6 +74,9 @@
 <script>
 import './inlineCalendar.less';
 import dayjs from 'dayjs';
+let touchStartPosition;
+let touchEndPosition;
+let timeStamp;
 
 export default {
   props: {
@@ -111,6 +120,11 @@ export default {
         date: dayjs().date(),
       },
       selectDate: [],
+      touch: {
+        x: 0,
+        y: 0,
+      },
+      isTouching: false,
     };
   },
   created() {
@@ -141,6 +155,40 @@ export default {
     this.getFullDate(this.showDate);
   },
   methods: {
+    touchstart(event) {
+      touchStartPosition = event.touches[0].clientX;
+      touchEndPosition = event.touches[0].clientY;
+      timeStamp = event.timeStamp;
+      this.touch = {
+        x: 0,
+        y: 0,
+      };
+      this.isTouching = true;
+    },
+    touchmove(event) {
+      event.preventDefault();
+      this.touch = {
+        x: (event.touches[0].clientX - touchStartPosition) / this.$refs.calendar.offsetWidth,
+        y: (event.touches[0].clientY - touchEndPosition) / this.$refs.calendar.offsetHeight,
+      };
+    },
+    touchend(event) {
+      this.isTouching = false;
+      const during = dayjs(event.timeStamp).diff(timeStamp);
+      if (Math.abs(this.touch.x) < 0.5 && during > 200) {
+        this.touch = {
+          x: 0,
+          y: 0,
+        };
+      } else {
+        if (this.touch.x > 0) {
+          this.changeMonth('prev');
+        }
+        if (this.touch.x < 0) {
+          this.changeMonth('next');
+        }
+      }
+    },
     // 触发change事件
     emitChange() {
       this.$emit('change', this.selectDate);

@@ -1,4 +1,5 @@
 .m-calendar {
+  z-index: 10000;
   .m-toolbar {
     display: flex;
     align-items: center;
@@ -59,7 +60,6 @@
         right: 0;
         bottom: 0;
         will-change: transform;
-        transition: .3s;
         .m-row {
           position: relative;
           display: flex;
@@ -69,9 +69,8 @@
             position: absolute;
             background-color: #ccc;
             display: block;
-            top: 0;
-            right: auto;
-            bottom: auto;
+            right: 0;
+            bottom: 0;
             left: 0;
             height: 1px;
             width: 100%;
@@ -90,7 +89,6 @@
               line-height: 30px;
               display: inline-block;
               border-radius: 100%;
-              transition: .1s;
             }
             .m-grey {
               color: #b8b8b8;
