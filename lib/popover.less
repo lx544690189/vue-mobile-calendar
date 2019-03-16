@@ -1,0 +1,35 @@
+.m-popover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .4);
+  will-change: transform;
+  transition: opacity .2s;
+  z-index: 10000;
+  .m-popover-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 300px;
+    will-change: transform;
+    transition-duration: .2s;
+  }
+}
+
+.m-slide-enter-active,.m-slide-leave-active {
+  transition: all .3s;
+}
+.m-slide-enter,
+.m-slide-leave-to {
+  transform: translateY(300px);
+}
+
+.m-fade-enter-active,.m-fade-leave-active {
+  transition: opacity .2s;
+}
+.m-fade-enter, .m-fade-leave-to{
+  opacity: 0;
+}
