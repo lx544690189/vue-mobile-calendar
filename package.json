@@ -5,7 +5,7 @@
     "calendar",
     "vue"
   ],
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "lixin",
   "license": "MIT",
   "private": false,
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/lx544690189/vue-mobile-calendar"
   },
-  "main": "lib/index.js",
+  "main": "dist/Calendar.umd.min.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build-docs": "vue-cli-service build --dest docs",
