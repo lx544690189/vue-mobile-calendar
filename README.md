@@ -25,10 +25,8 @@ npm install vue-mobile-calendar
 ```
 
 ```javascript
-// calendar为底部弹窗显示，inlineCalendar为页面内联显示（可放置页面任意地方）
-import { calendar, inlineCalendar } from 'vue-mobile-calendar'
-Vue.use(calendar);
-Vue.user(inlineCalendar);
+import Calendar from 'vue-mobile-calendar'
+Vue.use(Calendar);
 ```
 ### 外部引用方式，引入目录文件`disk/Calendar.umd.min.js`
 ```javascript
@@ -51,6 +49,7 @@ Vue.user(inlineCalendar);
 </template>
 
 <script>
+// Vue.use(Calendar)后可直接使用`<calendar />`和`<inlineCalendar />`组件。calendar为底部弹窗显示，inlineCalendar为页面内联显示（可放置页面任意地方）
 export default {
   methods: {
     onChange(date) {
@@ -58,6 +57,14 @@ export default {
     },
   },
 };
+
+// 或者在.vue文件中单独引入注册
+// import {calendar,inlineCalendar} from 'vue-mobile-calendar';
+// export default {
+//   components: {
+//     calendar,
+//   },
+// };
 </script>
 ```
 
