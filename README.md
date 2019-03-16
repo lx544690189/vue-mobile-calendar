@@ -25,6 +25,7 @@ npm install vue-mobile-calendar
 ```
 
 ```javascript
+// calendar为底部弹窗显示，inlineCalendar为页面内联显示（可放置页面任意地方）
 import { calendar, inlineCalendar } from 'vue-mobile-calendar'
 Vue.use(calendar);
 Vue.user(inlineCalendar);
@@ -50,7 +51,6 @@ Vue.user(inlineCalendar);
 </template>
 
 <script>
-// calendar为底部弹窗显示，inlineCalendar为页面内联显示（可放置页面任意地方）
 export default {
   methods: {
     onChange(date) {
