@@ -19,27 +19,20 @@ export default {
   components: {
     inlineCalendar,
   },
-  data() {
-    return {
-      slideIn: false,
-    };
-  },
   props: {
+    ...inlineCalendar.props,
     show: {
       type: Boolean,
       default: false,
     },
-    closeByClickmask: {
+    closeByClickMask: {
       type: Boolean,
       default: true,
     },
   },
-  created() {
-    this.slideIn = this.show;
-  },
   methods: {
     onPopoverClick(e) {
-      if (this.closeByClickmask && !this.$refs.calendar.$refs.calendar.contains(e.target)) {
+      if (this.closeByClickMask && !this.$refs.calendar.$refs.calendar.contains(e.target)) {
         this.$emit('update:show', false);
       }
     },
