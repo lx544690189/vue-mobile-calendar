@@ -8,7 +8,7 @@
       </div>
       <div class="m-month-selector">
         <a class="m-prev-btn" @click="changeMonth('prev')"></a>
-        <span>{{showDate.month}} 月</span>
+        <span>{{monthNames[showDate.month-1]}}</span>
         <a class="m-next-btn" @click="changeMonth('next')"></a>
       </div>
     </div>
