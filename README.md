@@ -23,9 +23,15 @@
 ```bash
 npm install vue-mobile-calendar
 ```
-### 若使用外部引用方式，需自行编译，引入`disk/Calendar.umd.min.js`和`Calendar.css`
-```bash
-npm run build-lib
+
+```javascript
+import { calendar, inlineCalendar } from 'vue-mobile-calendar'
+Vue.use(calendar);
+Vue.user(inlineCalendar);
+```
+### 外部引用方式，引入目录文件`disk/Calendar.umd.min.js`
+```javascript
+<script src='/dist/Calendar.umd.min.js'></script>
 ```
 ### **注意**
 **本次版本升级api与2.x版本不相同，2.x版本api[请点击查看](https://github.com/lx544690189/vue-mobile-calendar/blob/master/README-2.x.md)**
@@ -45,11 +51,7 @@ npm run build-lib
 
 <script>
 // calendar为底部弹窗显示，inlineCalendar为页面内联显示（可放置页面任意地方）
-import { calendar,inlineCalendar } from 'vue-mobile-calendar';
 export default {
-  components: {
-    calendar,
-  },
   methods: {
     onChange(date) {
       console.log(date.format('YY-MM-DD'));
