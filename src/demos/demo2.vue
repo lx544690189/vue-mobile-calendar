@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { calendar } from 'vue-mobile-calendar';
 import dayjs from 'dayjs';
 const DEFAULT_DATE = {
   single: dayjs().add(2, 'day'),
@@ -38,9 +37,6 @@ const DEFAULT_DATE = {
   during: [dayjs(), dayjs().add(3, 'day')],
 };
 export default {
-  components: {
-    calendar,
-  },
   data() {
     return {
       show: false,

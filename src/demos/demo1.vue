@@ -15,11 +15,7 @@
 </template>
 
 <script>
-import { calendar } from 'vue-mobile-calendar';
 export default {
-  components: {
-    calendar,
-  },
   data() {
     return {
       show: false,

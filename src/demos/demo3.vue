@@ -6,11 +6,7 @@
 </template>
 
 <script>
-import { inlineCalendar } from 'vue-mobile-calendar';
 export default {
-  components: {
-    inlineCalendar,
-  },
 };
 </script>
 
