@@ -81,7 +81,7 @@ let timeStamp;
 export default {
   props: {
     defaultDate: {
-      type: [Date, Number, Array, String],
+      type: [Date, Number, Array, String, dayjs],
     },
     disabledDate: {
       type: Array,
@@ -122,6 +122,11 @@ export default {
       },
     },
   },
+  watch: {
+    mode() {
+      this.init();
+    },
+  },
   data() {
     return {
       fullDate: [[], [], []],
@@ -144,33 +149,37 @@ export default {
     };
   },
   created() {
-    let { defaultDate, mode } = this;
-    let dateToShow = dayjs().startOf('month');
-    if (mode === 'single' && defaultDate) {
-      this.selectDate = dayjs(defaultDate).startOf('day');
-      dateToShow = this.selectDate.startOf('month');
-    }
-    if (mode === 'multiple' && Array.isArray(defaultDate)) {
-      if (defaultDate.length > 0) {
-        this.selectDate = defaultDate.map((item) => dayjs(item).startOf('day'));
-      }
-    }
-    if (mode === 'during' && Array.isArray(defaultDate)) {
-      if (defaultDate.length === 2) {
-        const startDate = dayjs(defaultDate[0]).startOf('day');
-        const endDate = dayjs(defaultDate[1]).startOf('day');
-        if (startDate.isBefore(endDate) || startDate.isSame(endDate)) {
-          this.selectDate = [startDate, endDate];
-        }
-      }
-    }
-    this.showDate = {
-      year: dateToShow.year(),
-      month: dateToShow.month() + 1,
-    };
-    this.getFullDate(this.showDate);
+    this.init();
   },
   methods: {
+    init() {
+      this.selectDate = [];
+      let { defaultDate, mode } = this;
+      let dateToShow = dayjs().startOf('month');
+      if (mode === 'single' && defaultDate) {
+        this.selectDate = dayjs(defaultDate).startOf('day');
+        dateToShow = this.selectDate.startOf('month');
+      }
+      if (mode === 'multiple' && Array.isArray(defaultDate)) {
+        if (defaultDate.length > 0) {
+          this.selectDate = defaultDate.map((item) => dayjs(item).startOf('day'));
+        }
+      }
+      if (mode === 'during' && Array.isArray(defaultDate)) {
+        if (defaultDate.length === 2) {
+          const startDate = dayjs(defaultDate[0]).startOf('day');
+          const endDate = dayjs(defaultDate[1]).startOf('day');
+          if (startDate.isBefore(endDate) || startDate.isSame(endDate)) {
+            this.selectDate = [startDate, endDate];
+          }
+        }
+      }
+      this.showDate = {
+        year: dateToShow.year(),
+        month: dateToShow.month() + 1,
+      };
+      this.getFullDate(this.showDate);
+    },
     touchstart(event) {
       if (this.enableTouch) {
         touchStartPosition = event.touches[0].clientX;
@@ -242,7 +251,9 @@ export default {
         }
         break;
       case 'during':
-        if (this.selectDate.length === 1) {
+        if (this.selectDate.length === 0) {
+          this.selectDate = [day.dateTime];
+        } else if (this.selectDate.length === 1) {
           this.selectDate.push(day.dateTime);
           if (this.selectDate[1].isBefore(this.selectDate[0])) {
             this.selectDate.reverse();
