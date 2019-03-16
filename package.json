@@ -7,6 +7,8 @@
   ],
   "version": "3.0.0",
   "author": "lixin",
+  "license": "MIT",
+  "private": false,
   "homepage": "https://github.com/lx544690189",
   "repository": {
     "type": "git",
