@@ -2,6 +2,7 @@
 node_modules
 src
 screenshot
+public
 
 # local env files
 .env.local
