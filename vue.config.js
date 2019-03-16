@@ -9,4 +9,7 @@ module.exports = {
     config.resolve.alias
       .set('vue-mobile-calendar', resolve('./lib/index.js'));
   },
+  css: {
+    extract: false,
+  },
 };
