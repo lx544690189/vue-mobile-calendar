@@ -6,8 +6,8 @@ function resolve(dir) {
 module.exports = {
   lintOnSave: true,
   chainWebpack: (config) => {
-    config.resolve.alias
-      .set('vue-mobile-calendar', resolve('./lib/index.js'));
+    // config.resolve.alias
+    //   .set('vue-mobile-calendar', resolve('./lib/index.js'));
   },
   css: {
     extract: false,
