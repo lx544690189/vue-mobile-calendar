@@ -13,9 +13,9 @@
 <img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/QRcode.png" width="200" float="left" style="border-radius: 6px" />
 </p>
 <p>
-<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/single.jpg" width="200" float="left" style="border-radius: 6px" />
-<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/multiple.jpg" width="200" float="left" style="border-radius: 6px" />
-<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/single.jpg" width="200" float="left" style="border-radius: 6px" />
+<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/single.png" width="200" float="left" style="border-radius: 6px" />
+<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/multiple.png" width="200" float="left" style="border-radius: 6px" />
+<img src="https://github.com/lx544690189/vue-mobile-calendar/blob/master/screenshot/single.png" width="200" float="left" style="border-radius: 6px" />
 </p>
 
 ## 使用方法
