@@ -106,10 +106,6 @@ export default {
       type: Boolean,
       default: true,
     },
-    preventTouchEvent: {
-      type: Boolean,
-      default: true,
-    },
     monthNames: {
       type: Array,
       default() {
@@ -195,7 +191,6 @@ export default {
     },
     touchmove(event) {
       if (this.enableTouch) {
-        this.preventTouchEvent && event.preventDefault();
         this.touch = {
           x: (event.touches[0].clientX - touchStartPosition) / this.$refs.calendar.offsetWidth,
           y: (event.touches[0].clientY - touchEndPosition) / this.$refs.calendar.offsetHeight,
@@ -206,18 +201,17 @@ export default {
       if (this.enableTouch) {
         this.isTouching = false;
         const during = dayjs(event.timeStamp).diff(timeStamp);
-        if (Math.abs(this.touch.x) < 0.5 && during > 200) {
+        if (Math.abs(this.touch.x) > Math.abs(this.touch.y) && Math.abs(this.touch.x * this.$refs.calendar.offsetWidth) > 20) {
+          if (this.touch.x > 0) {
+            this.changeMonth('prev');
+          } else if (this.touch.x < 0) {
+            this.changeMonth('next');
+          }
+        } else {
           this.touch = {
             x: 0,
             y: 0,
           };
-        } else {
-          if (this.touch.x > 0) {
-            this.changeMonth('prev');
-          }
-          if (this.touch.x < 0) {
-            this.changeMonth('next');
-          }
         }
       }
     },
