@@ -1,15 +1,15 @@
-
-const path = require('path');
-function resolve(dir) {
-  return path.join(__dirname, dir);
+function getPublicPath() {
+  if (process.env.NODE_ENV === 'production') {
+    return 'https://lx544690189.github.io/vue-mobile-calendar/';
+  } else {
+    return '/';
+  }
 }
+
 module.exports = {
   lintOnSave: true,
-  chainWebpack: (config) => {
-    // config.resolve.alias
-    //   .set('vue-mobile-calendar', resolve('./lib/index.js'));
-  },
   css: {
     extract: false,
   },
+  publicPath: getPublicPath(),
 };
