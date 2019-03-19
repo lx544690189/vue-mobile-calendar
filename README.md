@@ -125,6 +125,7 @@ export default {
 `enableTouch` | `Boolean` | `true` | 允许手势滑动切换月份
 `monthNames` | `Array` | `['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']` | 显示的月份文本
 `weekNames` | `Array` | `['周一', '周二', '周三', '周四', '周五', '周六', '周日']` | 显示的星期文本
+`show` | `Boolean` | `false` | 显示/关闭时间选择器弹窗（仅弹窗显示形式的calendar生效），可以使用sync修饰符`:show.sync="isShow"`来对此属性进行双向绑定，方便控制组件的显示隐藏
 `closeByClickMask` | `Boolean` | `true` | 允许点击遮罩层关闭（仅弹窗显示形式的calendar生效）
 `dayClick` | `Function` | - | 日期点击时的回调函数，回调参数为当前所点击的日期，`return false`将不会执行选中、取消选中的操作
 
