@@ -36,6 +36,7 @@ Vue.use(Calendar);
 **本次版本升级api与2.x版本不相同，2.x版本api[请点击查看](https://github.com/lx544690189/vue-mobile-calendar/blob/master/README-2.x.md)**
 
 ### 更新日志
+- V3.0.6(2019-3-26) [增加年月切换事件switch](https://github.com/lx544690189/vue-mobile-calendar/pull/11)
 - V3.0.0(2019-3-16) 增加多选、时间段选择模式；增加日期内联显示方式；部分api与2.x不相同，升级请注意
 
 ### Quickstart
