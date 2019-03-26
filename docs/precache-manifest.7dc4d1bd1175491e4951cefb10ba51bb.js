@@ -8,11 +8,11 @@ self.__precacheManifest = [
     "url": "https://lx544690189.github.io/vue-mobile-calendar/js/chunk-vendors.f99dfd89.js"
   },
   {
-    "revision": "92e16d9b51eee80e3d0c",
-    "url": "https://lx544690189.github.io/vue-mobile-calendar/js/app.8a5e7cdb.js"
+    "revision": "94ca98fdc6983a2e9fda",
+    "url": "https://lx544690189.github.io/vue-mobile-calendar/js/app.489ac65d.js"
   },
   {
-    "revision": "6f7dc8a5a9497c7b8cedb7a86382901f",
+    "revision": "37446b31feb5989c243ccccf0401722c",
     "url": "https://lx544690189.github.io/vue-mobile-calendar/index.html"
   }
 ];
