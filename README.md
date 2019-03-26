@@ -128,6 +128,7 @@ export default {
 `show` | `Boolean` | `false` | 显示/关闭时间选择器弹窗（仅弹窗显示形式的calendar生效），可以使用sync修饰符`:show.sync="isShow"`来对此属性进行双向绑定，方便控制组件的显示隐藏
 `closeByClickMask` | `Boolean` | `true` | 允许点击遮罩层关闭（仅弹窗显示形式的calendar生效）
 `dayClick` | `Function` | - | 日期点击时的回调函数，回调参数为当前所点击的日期，`return false`将不会执行选中、取消选中的操作
+`switch` | `Function` | - | 年月切换的回调，回调参数为当前显示的年月`{year,month}`
 
 ### 事件
 
