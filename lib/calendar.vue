@@ -3,7 +3,7 @@
     <div class="m-popover" v-show="show"  @click="onPopoverClick">
       <transition name="m-slide">
         <div class="m-popover-container" v-show="show">
-          <inlineCalendar v-bind="$props" @change="handelChange" ref="calendar" />
+          <inlineCalendar v-bind="$props" @change="handelChange" @switch="handelSwitch" ref="calendar" />
         </div>
       </transition>
     </div>
@@ -38,6 +38,9 @@ export default {
     },
     handelChange(val) {
       this.$emit('change', val);
+    },
+    handelSwitch(val) {
+      this.$emit('switch', val);
     },
   },
 };

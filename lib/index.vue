@@ -1,6 +1,6 @@
 <template>
   <popover :show.sync="show">
-    <inlineCalendar v-bind="$props" @change="handelChange"></inlineCalendar>
+    <inlineCalendar v-bind="$props" @change="handelChange" @switch="handelSwitch"></inlineCalendar>
   </popover>
 </template>
 
@@ -25,6 +25,9 @@ export default {
   methods: {
     handelChange(val) {
       this.$emit('change', val);
+    },
+    handelSwitch(val) {
+      this.$emit('switch', val);
     },
   },
 };
