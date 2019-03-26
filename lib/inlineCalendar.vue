@@ -219,6 +219,10 @@ export default {
     emitChange() {
       this.$emit('change', this.selectDate);
     },
+    // 触发切换年月事件
+    emitSwitch(showDate) {
+      this.$emit('switch', showDate);
+    },
     // 日期点击事件
     onDayClick(day) {
       if (!this.dayClick(day.dateTime)) {
@@ -279,6 +283,7 @@ export default {
         year: computedDate.year(),
         month: computedDate.month() + 1,
       };
+      this.emitSwitch(this.showDate);
       this.getFullDate(this.showDate);
     },
     // 切换月份
@@ -299,6 +304,7 @@ export default {
         year: computedDate.year(),
         month: computedDate.month() + 1,
       };
+      this.emitSwitch(this.showDate);
       this.getFullDate(this.showDate);
     },
     getFullDate() {
