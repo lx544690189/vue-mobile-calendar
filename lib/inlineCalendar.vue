@@ -314,6 +314,15 @@ export default {
       this.emitSwitch(this.showDate);
       this.getFullDate(this.showDate);
     },
+    // 暴露出去的方法：切换当前显示的时间
+    changeDateView(date = dayjs()) {
+      const changeDate = dayjs(date);
+      this.showDate = {
+        year: changeDate.year(),
+        month: changeDate.month() + 1,
+      };
+      this.getFullDate(this.showDate);
+    },
     getFullDate() {
       const date = dayjs(`${this.showDate.year}-${this.showDate.month}`);
       const thisDate = this.getDate(date);
