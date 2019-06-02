@@ -90,6 +90,12 @@ export default {
         return [];
       },
     },
+    minDate: {
+      type: [Date, Number, Array, String, dayjs],
+    },
+    maxDate: {
+      type: [Date, Number, Array, String, dayjs],
+    },
     mode: {
       type: String,
       default: 'single',
@@ -250,6 +256,7 @@ export default {
         }
         break;
       case 'during':
+        if (day.isDisable) return;
         if (this.selectDate.length === 0) {
           this.selectDate = [day.dateTime];
         } else if (this.selectDate.length === 1) {
@@ -348,6 +355,25 @@ export default {
       }
       return false;
     },
+    getIsDisable(dateTime) {
+      let isDisable = false;
+      const disabledDate = this.disabledDate.map((item) => dayjs(item).startOf('day'));
+      if (this.minDate || this.maxDate) {
+        if (this.minDate) {
+          const minDate = dayjs(this.minDate).startOf('day');
+          isDisable = dateTime.isBefore(minDate);
+        }
+        if (!isDisable && this.maxDate) {
+          const maxDate = dayjs(this.maxDate).endOf('day');
+          isDisable = dateTime.isAfter(maxDate);
+        }
+      } else if (disabledDate.length > 0) {
+        if (this.mode !== 'during') {
+          isDisable = disabledDate.some((item) => item.isSame(dateTime));
+        }
+      }
+      return isDisable;
+    },
     getDate(thisDate) {
       let date = [];
       const prevDate = thisDate.subtract(1, 'month');
@@ -369,7 +395,7 @@ export default {
             isGrey: true,
             isToday: dateTime.isSame(dayjs().startOf('day')),
             isSelect: this.isSelect(dateTime),
-            isDisable: this.mode !== 'during' && disabledDate.some((item) => item.isSame(dateTime)),
+            isDisable: this.getIsDisable(dateTime),
             isDuring: this.isBetting(dateTime),
           };
         }
@@ -386,7 +412,7 @@ export default {
             isGrey: false,
             isToday: dateTime.isSame(dayjs().startOf('day')),
             isSelect: this.isSelect(dateTime),
-            isDisable: this.mode !== 'during' && disabledDate.some((item) => item.isSame(dateTime)),
+            isDisable: this.getIsDisable(dateTime),
             isDuring: this.isBetting(dateTime),
           };
         }
@@ -400,7 +426,7 @@ export default {
             isGrey: true,
             isToday: dateTime.isSame(dayjs().startOf('day')),
             isSelect: this.isSelect(dateTime),
-            isDisable: this.mode !== 'during' && disabledDate.some((item) => item.isSame(dateTime)),
+            isDisable: this.getIsDisable(dateTime),
             isDuring: this.isBetting(dateTime),
           };
         }
