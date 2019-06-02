@@ -130,12 +130,20 @@ export default {
 `closeByClickMask` | `Boolean` | `true` | 允许点击遮罩层关闭（仅弹窗显示形式的calendar生效）
 `dayClick` | `Function` | - | 日期点击时的回调函数，回调参数为当前所点击的日期，`return false`将不会执行选中、取消选中的操作
 `switch` | `Function` | - | 年月切换的回调，回调参数为当前显示的年月`{year,month}`
+`minDate` | `[Date, Number, Array, String]` | - | (v-3.1.0新增)指定最小可选时间，为`Dayjs`所支持的类型数据，不能与`disabledDate`同时使用
+`maxDate` | `[Date, Number, Array, String]` | - | (v-3.1.0新增)指定最大可选时间，为`Dayjs`所支持的类型数据，不能与`disabledDate`同时使用
 
 ### 事件
 
 名称 | 说明 | 回调
 ---|--- | ---
 change | 当前所选日期改变 | 回调参数为当前所选日期（dayjs类型，如获取时间字符串：`date.format('YYYY-MM-DD')`），`mode`为单选模式时为`date`；`mode`为多选模式为`[date1,date2]`；`mode`为时间段选择模式为`[startDate,endDate]`，当只选了开始时间时会为`[startDate]`
+
+### 方法
+
+名称 | 说明 | 默认值
+---|--- | ---
+changeDateView | 通过`this.$refs.myCalendar.changeDateView(toDate)`改变当前显示的日期，如“回到今天” | `toDate`参数不传默认为当前日期
 
 ## Reference
 - [framework7](https://github.com/nolimits4web/Framework7)
