@@ -1,6 +1,6 @@
 <template>
   <div id="demo-1" class="demo">
-    <div class="demo-title">demo-1：弹窗视图</div>
+    <div class="demo-title">demo-1：弹窗视图，会显示关闭按钮</div>
     <button class="btn" @click="selectDate('single')">单选模式</button>
     <button class="btn" @click="selectDate('multiple')">多选模式</button>
     <button class="btn" @click="selectDate('during')">时间段选择模式</button>
@@ -10,7 +10,7 @@
     <p>
       已选日期：{{this.date}}
     </p>
-    <calendar :show.sync="show" :mode="mode" @change="onChange" :showClearBtn="true" @clear="Clear" clearBtnTitle="自定义按钮标题"/>
+    <calendar :show.sync="show" :mode="mode" @change="onChange" showClearBtn="true" @clear="Clear" clearBtnTitle="自定义按钮标题"/>
   </div>
 </template>
 
