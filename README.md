@@ -24,6 +24,13 @@
 npm install vue-mobile-calendar
 ```
 
+### npm调试以及编译
+```bash
+第一步：npm install vue-mobile-calendar
+第二步：npm install
+第三步：运行调试 npm run dev 或者编译 npm run build-lib
+```
+
 ```javascript
 import Calendar from 'vue-mobile-calendar'
 Vue.use(Calendar);
@@ -133,8 +140,8 @@ export default {
 `switch` | `Function` | - | 年月切换的回调，回调参数为当前显示的年月`{year,month}`
 `minDate` | `[Date, Number, Array, String]` | - | (v-3.1.0新增)指定最小可选时间，为`Dayjs`所支持的类型数据，不能与`disabledDate`同时使用
 `maxDate` | `[Date, Number, Array, String]` | - | (v-3.1.0新增)指定最大可选时间，为`Dayjs`所支持的类型数据，不能与`disabledDate`同时使用
-`showClearBtn` | `Boolean` | `false` | `是否显示清除按钮`
-`clearBtnTitle` | `String` | `清除` | `清除按钮标题`
+`showClearBtn` | `Boolean` | `false` | 是否显示清除按钮
+`clearBtnTitle` | `String` | `清除` | 清除按钮标题
 
 ### 事件
 
