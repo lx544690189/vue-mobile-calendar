@@ -7,6 +7,7 @@
     <demo4 />
     <demo5 />
     <demo6 />
+    <demo7 />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import demo3 from './demos/demo3.vue';
 import demo4 from './demos/demo4.vue';
 import demo5 from './demos/demo5.vue';
 import demo6 from './demos/demo6.vue';
+import demo7 from './demos/demo7.vue';
 export default {
   components: {
     demo1,
@@ -25,6 +27,7 @@ export default {
     demo4,
     demo5,
     demo6,
+    demo7,
   },
 };
 </script>

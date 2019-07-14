@@ -159,9 +159,12 @@ export default {
     this.init();
   },
   methods: {
-    init() {
+    init(date) {
       this.selectDate = [];
       let { defaultDate, mode } = this;
+      if (date) {
+        defaultDate = date;
+      }
       let dateToShow = dayjs().startOf('month');
       if (mode === 'single' && defaultDate) {
         this.selectDate = dayjs(defaultDate).startOf('day');
@@ -317,6 +320,14 @@ export default {
       };
       this.emitSwitch(this.showDate);
       this.getFullDate(this.showDate);
+    },
+    // 暴露出去的方法：切换已选的时间
+    changeDate(date) {
+      console.log(this);
+      if (!dayjs(date).isValid()) {
+        console.error('Type of parameter is invalid!');
+      }
+      this.init(date);
     },
     // 暴露出去的方法：切换当前显示的时间
     changeDateView(date = dayjs()) {

@@ -36,6 +36,11 @@ Vue.use(Calendar);
 **本次版本升级api与2.x版本不相同，2.x版本api[请点击查看](https://github.com/lx544690189/vue-mobile-calendar/blob/master/README-2.x.md)**
 
 ### 更新日志
+- V3.2.0(2019-7-14) 
+  - 新增`yearName`设置“年”的多语言；
+  - 新增`changeDate`方法，用于改变已选日期；
+  - 修复弹窗calendar未暴露组件的某些方法导致调用报错；
+  - 修复移动端滚动穿透问题；
 - V3.1.1(2019-6-2) 新增minDate、maxDate设置最大、最小可选日期；新增changeDateView方法，用于重置置当前显示的日期
 - V3.0.6(2019-3-26) [增加年月切换事件switch](https://github.com/lx544690189/vue-mobile-calendar/pull/11)
 - V3.0.0(2019-3-16) 增加多选、时间段选择模式；增加日期内联显示方式；部分api与2.x不相同，升级请注意
@@ -145,6 +150,7 @@ change | 当前所选日期改变 | 回调参数为当前所选日期（dayjs类
 
 名称 | 说明 | 默认值
 ---|--- | ---
+changeDate | 通过`this.$refs.myCalendar.changeDateView(date)`改变当前已选日期，参数为`Dayjs`所支持的类型数据 | -
 changeDateView | 通过`this.$refs.myCalendar.changeDateView(toDate)`改变当前显示的日期，如“回到今天” | `toDate`参数不传默认为当前日期
 
 ## Reference
