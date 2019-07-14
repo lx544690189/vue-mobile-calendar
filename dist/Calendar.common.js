@@ -2614,12 +2614,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f4780f24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./lib/calendar.vue?vue&type=template&id=732e7da4&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"m-fade"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"m-popover",on:{"click":_vm.onPopoverClick}},[_c('transition',{attrs:{"name":"m-slide"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"m-popover-container"},[_c('inlineCalendar',_vm._b({ref:"calendar",on:{"change":_vm.handelChange,"switch":_vm.handelSwitch}},'inlineCalendar',_vm.$props,false))],1)])],1)])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f4780f24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./lib/calendar.vue?vue&type=template&id=4a320756&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"m-fade"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"m-popover",on:{"click":_vm.onPopoverClick,"touchmove":_vm.handelTouchStart}},[_c('transition',{attrs:{"name":"m-slide"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"m-popover-container"},[_c('inlineCalendar',_vm._b({ref:"calendar",on:{"change":_vm.handelChange,"switch":_vm.handelSwitch}},'inlineCalendar',_vm.$props,false))],1)])],1)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./lib/calendar.vue?vue&type=template&id=732e7da4&
+// CONCATENATED MODULE: ./lib/calendar.vue?vue&type=template&id=4a320756&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
 var get_own_property_descriptor = __webpack_require__("268f");
@@ -2680,8 +2680,8 @@ function _objectSpread(target) {
 // EXTERNAL MODULE: ./lib/popover.less
 var popover = __webpack_require__("698e");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f4780f24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./lib/inlineCalendar.vue?vue&type=template&id=4e843fcc&
-var inlineCalendarvue_type_template_id_4e843fcc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"calendar",staticClass:"m-calendar"},[_c('div',{staticClass:"m-toolbar"},[_c('div',{staticClass:"m-year-selector"},[_c('a',{staticClass:"m-prev-btn",on:{"click":function($event){_vm.changeYear('prev')}}}),_c('span',[_vm._v(_vm._s(_vm.showDate.year)+" 年")]),_c('a',{staticClass:"m-next-btn",on:{"click":function($event){_vm.changeYear('next')}}})]),_c('div',{staticClass:"m-month-selector"},[_c('a',{staticClass:"m-prev-btn",on:{"click":function($event){_vm.changeMonth('prev')}}}),_c('span',[_vm._v(_vm._s(_vm.monthNames[_vm.showDate.month-1]))]),_c('a',{staticClass:"m-next-btn",on:{"click":function($event){_vm.changeMonth('next')}}})])]),_c('div',{staticClass:"m-week-header"},_vm._l((_vm.weekNames),function(item){return _c('div',{key:item,staticClass:"m-week-day"},[_vm._v("\n      "+_vm._s(item)+"\n    ")])}),0),_c('div',{staticClass:"m-months-container",on:{"touchstart":_vm.touchstart,"touchmove":_vm.touchmove,"touchend":_vm.touchend}},[_c('div',{staticClass:"m-months-wrapper",style:({'transform': ("translate3d(" + (-_vm.translateX*100) + "%, 0, 0)")})},_vm._l((_vm.fullDate),function(month,monthIndex){return _c('div',{key:monthIndex,staticClass:"m-months",style:({
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"f4780f24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./lib/inlineCalendar.vue?vue&type=template&id=6b9d0644&
+var inlineCalendarvue_type_template_id_6b9d0644_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"calendar",staticClass:"m-calendar"},[_c('div',{staticClass:"m-toolbar"},[_c('div',{staticClass:"m-year-selector"},[_c('a',{staticClass:"m-prev-btn",on:{"click":function($event){_vm.changeYear('prev')}}}),_c('span',[_vm._v(_vm._s(_vm.showDate.year)+" "+_vm._s(_vm.yearName))]),_c('a',{staticClass:"m-next-btn",on:{"click":function($event){_vm.changeYear('next')}}})]),_c('div',{staticClass:"m-month-selector"},[_c('a',{staticClass:"m-prev-btn",on:{"click":function($event){_vm.changeMonth('prev')}}}),_c('span',[_vm._v(_vm._s(_vm.monthNames[_vm.showDate.month-1]))]),_c('a',{staticClass:"m-next-btn",on:{"click":function($event){_vm.changeMonth('next')}}})])]),_c('div',{staticClass:"m-week-header"},_vm._l((_vm.weekNames),function(item){return _c('div',{key:item,staticClass:"m-week-day"},[_vm._v("\n      "+_vm._s(item)+"\n    ")])}),0),_c('div',{staticClass:"m-months-container",on:{"touchstart":_vm.touchstart,"touchmove":_vm.touchmove,"touchend":_vm.touchend}},[_c('div',{staticClass:"m-months-wrapper",style:({'transform': ("translate3d(" + (-_vm.translateX*100) + "%, 0, 0)")})},_vm._l((_vm.fullDate),function(month,monthIndex){return _c('div',{key:monthIndex,staticClass:"m-months",style:({
           transform: ("translate3d(" + ((monthIndex-1+_vm.translateX + (_vm.isTouching ? _vm.touch.x : 0))*100) + "%, 0, 0)"),
           transitionDuration: _vm.isTouching ? '0s' : '.3s',
         })},_vm._l((month),function(week,weekIndex){return _c('div',{key:weekIndex,staticClass:"m-row"},_vm._l((week),function(day,dayIndex){return _c('div',{key:dayIndex,staticClass:"m-day",on:{"click":function($event){_vm.onDayClick(day)}}},[_c('span',{class:{
@@ -2692,10 +2692,10 @@ var inlineCalendarvue_type_template_id_4e843fcc_render = function () {var _vm=th
                 'm-select': day.isSelect,
                 'm-during': day.isDuring
               }},[_vm._v("\n              "+_vm._s(day.value)+"\n            ")])])}),0)}),0)}),0)])])}
-var inlineCalendarvue_type_template_id_4e843fcc_staticRenderFns = []
+var inlineCalendarvue_type_template_id_6b9d0644_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./lib/inlineCalendar.vue?vue&type=template&id=4e843fcc&
+// CONCATENATED MODULE: ./lib/inlineCalendar.vue?vue&type=template&id=6b9d0644&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
 var is_array = __webpack_require__("a745");
@@ -2837,6 +2837,10 @@ var timeStamp;
       default: function _default() {
         return ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
       }
+    },
+    yearName: {
+      type: String,
+      default: '年'
     }
   },
   watch: {
@@ -2869,10 +2873,15 @@ var timeStamp;
     this.init();
   },
   methods: {
-    init: function init() {
+    init: function init(date) {
       this.selectDate = [];
       var defaultDate = this.defaultDate,
           mode = this.mode;
+
+      if (date) {
+        defaultDate = date;
+      }
+
       var dateToShow = dayjs_min_default()().startOf('month');
 
       if (mode === 'single' && defaultDate) {
@@ -3052,6 +3061,16 @@ var timeStamp;
       };
       this.emitSwitch(this.showDate);
       this.getFullDate(this.showDate);
+    },
+    // 暴露出去的方法：切换已选的时间
+    changeDate: function changeDate(date) {
+      console.log(this);
+
+      if (!dayjs_min_default()(date).isValid()) {
+        console.error('Type of parameter is invalid!');
+      }
+
+      this.init(date);
     },
     // 暴露出去的方法：切换当前显示的时间
     changeDateView: function changeDateView() {
@@ -3318,8 +3337,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   lib_inlineCalendarvue_type_script_lang_js_,
-  inlineCalendarvue_type_template_id_4e843fcc_render,
-  inlineCalendarvue_type_template_id_4e843fcc_staticRenderFns,
+  inlineCalendarvue_type_template_id_6b9d0644_render,
+  inlineCalendarvue_type_template_id_6b9d0644_staticRenderFns,
   false,
   null,
   null,
@@ -3359,9 +3378,14 @@ var component = normalizeComponent(
       default: true
     }
   }),
+  mounted: function mounted() {
+    // 手动将inlineCalendar提供的外部方法映射到二次封装的组件中，能正常调用
+    this.changeDate = this.$refs.calendar.changeDate;
+    this.changeDateView = this.$refs.calendar.changeDateView;
+  },
   methods: {
     onPopoverClick: function onPopoverClick(e) {
-      if (this.closeByClickMask && !this.$refs.calendar.$refs.calendar.contains(e.target)) {
+      if (this.closeByClickMask && !this.$refs.calendar.$el.contains(e.target)) {
         this.$emit('update:show', false);
       }
     },
@@ -3370,6 +3394,10 @@ var component = normalizeComponent(
     },
     handelSwitch: function handelSwitch(val) {
       this.$emit('switch', val);
+    },
+    handelTouchStart: function handelTouchStart(e) {
+      // 解决移动端滚动穿透
+      e.preventDefault();
     }
   }
 });
