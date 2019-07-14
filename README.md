@@ -125,6 +125,7 @@ export default {
 `defaultDate` | `[Date, Number, Array, String]` | - | 默认已选时间，`mode`为单选模式时为`Dayjs`所支持的时间类型(见上面说明)，如'1995-12-25'；`mode`为多选模式为数组形式；`mode`为时间段选择模式为长度2的数组，如`[startDate,endDate]`
 `disabledDate` | `Array` | [] | 不可选日期，仅`mode`为'single'和'multiple'下支持
 `enableTouch` | `Boolean` | `true` | 允许手势滑动切换月份
+`yearName` | `String` | `'年'` | “年”的文本
 `monthNames` | `Array` | `['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']` | 显示的月份文本
 `weekNames` | `Array` | `['周一', '周二', '周三', '周四', '周五', '周六', '周日']` | 显示的星期文本
 `show` | `Boolean` | `false` | 显示/关闭时间选择器弹窗（仅弹窗显示形式的calendar生效），可以使用sync修饰符`:show.sync="isShow"`来对此属性进行双向绑定，方便控制组件的显示隐藏

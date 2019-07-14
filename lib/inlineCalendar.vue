@@ -3,7 +3,7 @@
     <div class="m-toolbar">
       <div class="m-year-selector">
         <a class="m-prev-btn" @click="changeYear('prev')"></a>
-        <span>{{showDate.year}} 年</span>
+        <span>{{showDate.year}} {{yearName}}</span>
         <a class="m-next-btn" @click="changeYear('next')"></a>
       </div>
       <div class="m-month-selector">
@@ -123,6 +123,10 @@ export default {
       default() {
         return ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
       },
+    },
+    yearName: {
+      type: String,
+      default: '年',
     },
   },
   watch: {
