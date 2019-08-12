@@ -8,6 +8,7 @@
     <demo5 />
     <demo6 />
     <demo7 />
+    <demo8 />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import demo4 from './demos/demo4.vue';
 import demo5 from './demos/demo5.vue';
 import demo6 from './demos/demo6.vue';
 import demo7 from './demos/demo7.vue';
+import demo8 from './demos/demo8.vue';
 export default {
   components: {
     demo1,
@@ -28,6 +30,7 @@ export default {
     demo5,
     demo6,
     demo7,
+    demo8,
   },
 };
 </script>
