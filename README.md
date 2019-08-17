@@ -36,6 +36,10 @@ Vue.use(Calendar);
 **本次版本升级api与2.x版本不相同，2.x版本api[请点击查看](https://github.com/lx544690189/vue-mobile-calendar/blob/master/README-2.x.md)**
 
 ### 更新日志
+- V3.2.1(2019-8-17) 
+  - [ feat ] 新增日期中显示自定义内容`v-slot:day`，使用方法查看demo-9
+  - [ [PR](https://github.com/lx544690189/vue-mobile-calendar/pull/28) ] during 模式下，增加只能在当前展示的月份上进行选择的 prop 
+  - [ [fix](https://github.com/lx544690189/vue-mobile-calendar/issues/25) ] changeDate 参数校验错误
 - V3.2.0(2019-7-14) 
   - 新增`yearName`设置“年”的多语言；
   - 新增`changeDate`方法，用于改变已选日期；
@@ -152,6 +156,42 @@ change | 当前所选日期改变 | 回调参数为当前所选日期（dayjs类
 ---|--- | ---
 changeDate | 通过`this.$refs.myCalendar.changeDateView(date)`改变当前已选日期，参数为`Dayjs`所支持的类型数据 | -
 changeDateView | 通过`this.$refs.myCalendar.changeDateView(toDate)`改变当前显示的日期，如“回到今天” | `toDate`参数不传默认为当前日期
+
+
+### slot
+
+名称 | 说明 | 参数
+---|--- | ---
+date | 日期自定义内容 | 参数及使用见下说明
+
+v-slot:day 使用：
+```javascript
+<template>
+  <inlineCalendar>
+    <!-- 自定义日期中内容 -->
+    <template v-slot:day="scope">
+      <!-- 如每月1号显示圆点 -->
+      <div v-if="scope.date.value === 1" class="point" />
+    </template>
+  </inlineCalendar>
+</template>
+
+<script>
+// 可获取的scope对象如下
+scope = {
+  date: {
+    value,//当前几号
+    dateTime,// 当前日期（dayjs类型）
+    isGrey,// 是否当前月的日期
+    isToday,// 是否今天
+    isSelect,// 是否被选中
+    isDisable,// 是否被禁止选择
+    isDuring,// 是否在已选日期段内
+  }
+}
+</script>
+
+```
 
 ## Reference
 - [framework7](https://github.com/nolimits4web/Framework7)

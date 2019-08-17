@@ -3,7 +3,11 @@
     <div class="m-popover" v-show="show"  @click="onPopoverClick" @touchmove="handelTouchStart">
       <transition name="m-slide">
         <div class="m-popover-container" v-show="show">
-          <inlineCalendar v-bind="$props" @change="handelChange" @switch="handelSwitch" ref="calendar" />
+          <inlineCalendar v-bind="$props" @change="handelChange" @switch="handelSwitch" ref="calendar">
+            <template v-slot:day="{date}">
+              <slot name="day" :date="date" />
+            </template>
+          </inlineCalendar>
         </div>
       </transition>
     </div>

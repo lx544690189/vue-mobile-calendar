@@ -63,6 +63,7 @@
               >
                 {{day.value}}
               </span>
+              <slot name="day" :date="day" />
             </div>
           </div>
         </div>
