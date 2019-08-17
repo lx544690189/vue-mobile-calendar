@@ -331,11 +331,11 @@ export default {
     },
     // 暴露出去的方法：切换已选的时间
     changeDate(date) {
-      console.log(this);
-      if (!dayjs(date).isValid()) {
+      if (dayjs(date).isValid() || Array.isArray(date)) {
+        this.init(date);
+      } else {
         console.error('Type of parameter is invalid!');
       }
-      this.init(date);
     },
     // 暴露出去的方法：切换当前显示的时间
     changeDateView(date = dayjs()) {
