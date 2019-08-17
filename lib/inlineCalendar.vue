@@ -128,6 +128,10 @@ export default {
       type: String,
       default: '年',
     },
+    restrictCurrentMonth: {
+      type: Boolean,
+      default: false,
+    },
   },
   watch: {
     mode() {
@@ -234,6 +238,9 @@ export default {
     },
     // 触发切换年月事件
     emitSwitch(showDate) {
+      if (this.restrictCurrentMonth) {
+        this.selectDate = [];
+      }
       this.$emit('switch', showDate);
     },
     // 日期点击事件
@@ -264,6 +271,7 @@ export default {
         break;
       case 'during':
         if (day.isDisable) return;
+        if (this.restrictCurrentMonth && day.isGrey) return;
         if (this.selectDate.length === 0) {
           this.selectDate = [day.dateTime];
         } else if (this.selectDate.length === 1) {
